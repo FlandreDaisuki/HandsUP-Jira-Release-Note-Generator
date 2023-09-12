@@ -3,74 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HandsUP Jira Release Note Generator</title>
-  <style>
-    dialog {
-      text-align: center;
-    }
-
-    figure img {
-      border: 1px solid #ccc;
-    }
-
-  </style>
 </head>
 
 <body>
   <h1>HandsUP Jira Release Note Generator</h1>
-  <h2>Step 1. Upload the XML by JQL filters from Jira <button id="🔰">🔰</button></h2>
-  <input id="📄" type="file" />
-  <h2>Step 2. Copy the following links into the sprint release note</h2>
-  <output id="🎉"></output>
-
-  <dialog id="👨‍‍🏫">
-    <form method="dialog">
-      <figure>
-        <img src="filter current sprint issues and export the results.jpg"
-          alt="filter current sprint issues and export the results">
-        <figcaption>
-          <p>
-            <span>Here is the JQL query:</span>
-            <code>project = HandsUP AND sprint in openSprints() AND status = Verified</code>
-          </p>
-          <p>
-            Then export the results as XML and upload it to this page.
-          </p>
-        </figcaption>
-      </figure>
-      <button>Close</button>
-    </form>
-  </dialog>
-
+  <p>Redirect to <a href="https://handsup-jira-release-note-generator.pages.dev/">https://handsup-jira-release-note-generator.pages.dev/</a> after 5 seconds...</p>
   <script>
-    const buttonEl = document.getElementById('🔰');
-    const dialogEl = document.getElementById('👨‍‍🏫');
-    buttonEl.onclick = () => dialogEl.showModal();
-  </script>
-
-  <script>
-    const inputEl = document.getElementById('📄');
-    const outputEl = document.getElementById('🎉');
-    inputEl.value = '';
-    inputEl.addEventListener('change', function (e) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const xml = new DOMParser().parseFromString(e.target.result, 'text/xml');
-        outputEl.innerHTML = Array.from(xml.querySelectorAll('item'))
-          .map((itemEl) => {
-            // const title = itemEl.querySelector('title').textContent;
-            const summary = itemEl.querySelector('summary').textContent;
-            const link = itemEl.querySelector('link').textContent;
-            return `<a href="${link}">${summary}</a>`;
-          })
-          .sort((a, b) => a.localeCompare(b))
-          .join('<br/>');
-      };
-      reader.readAsText(file);
-    });
+    setTimeout(() => location.href = 'https://handsup-jira-release-note-generator.pages.dev/', 5_000);
   </script>
 </body>
 
